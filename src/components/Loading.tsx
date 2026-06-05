@@ -1,14 +1,31 @@
 import { useEffect, useState } from "react";
 import "./styles/Loading.css";
 import { useLoading } from "../context/LoadingProvider";
-
 import Marquee from "react-fast-marquee";
 
 const Loading = ({ percent }: { percent: number }) => {
-  const { setIsLoading } = useLoading();
+  const { setIsLoading, setLoading } = useLoading();
   const [loaded, setLoaded] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [clicked, setClicked] = useState(false);
+
+  // Auto-progress loading since we no longer use a 3D model loader
+  useEffect(() => {
+    let p = 0;
+    const interval = setInterval(() => {
+      if (p < 90) {
+        p += Math.round(Math.random() * 8) + 3;
+        if (p > 90) p = 90;
+        setLoading(p);
+      } else {
+        clearInterval(interval);
+        setTimeout(() => {
+          setLoading(100);
+        }, 500);
+      }
+    }, 80);
+    return () => clearInterval(interval);
+  }, []);
 
   if (percent >= 100) {
     setTimeout(() => {
@@ -66,43 +83,11 @@ const Loading = ({ percent }: { percent: number }) => {
       >
         <div className="loader-content">
           <p>Loading</p>
-          <span> {percent}%</span>
+          <span>{percent}%</span>
         </div>
-        <p className="loader-welcome"> Welcome </p>
       </div>
     </>
   );
 };
 
 export default Loading;
-
-export const setProgress = (setLoading: (value: number) => void) => {
-  let percent: number = 0;
-  // Fast interval: increment quickly to 90
-  let interval = setInterval(() => {
-    if (percent < 90) {
-      percent += Math.round(Math.random() * 8) + 3; // +3 to +10 per tick
-      if (percent > 90) percent = 90;
-      setLoading(percent);
-    } else {
-      clearInterval(interval);
-    }
-  }, 80); // fast: every 80ms
-
-  function clear() {
-    clearInterval(interval);
-    setLoading(100);
-  }
-
-  function loaded() {
-    return new Promise((resolve) => {
-      clearInterval(interval);
-      // Jump straight to 100
-      percent = 100;
-      setLoading(100);
-      setTimeout(() => resolve(percent), 50);
-    });
-  }
-
-  return { loaded, percent, clear };
-};
