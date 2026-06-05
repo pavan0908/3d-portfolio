@@ -33,7 +33,7 @@ const Loading = ({ percent }: { percent: number }) => {
     });
   }, [isLoaded]);
 
-  function handleMouseMove(e: React.MouseEvent<HTMLElement>) {
+  function handleMouseMove(e: React.MouseEvent) {
     const { currentTarget: target } = e;
     const rect = target.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -44,47 +44,31 @@ const Loading = ({ percent }: { percent: number }) => {
 
   return (
     <>
-      <div className="loading-header">
-        <a href="/#" className="loader-title" data-cursor="disable">
-          AM
-        </a>
-        <div className={`loaderGame ${clicked && "loader-out"}`}>
-          <div className="loaderGame-container">
-            <div className="loaderGame-in">
-              {[...Array(27)].map((_, index) => (
-                <div className="loaderGame-line" key={index}></div>
-              ))}
-            </div>
-            <div className="loaderGame-ball"></div>
-          </div>
-        </div>
+      <a href="/#" className="loader-title" data-cursor="disable">
+        PM
+      </a>
+      <div className="loader-squares">
+        {[...Array(27)].map((_, index) => (
+          <div key={index} className="square"></div>
+        ))}
       </div>
-      <div className="loading-screen">
-        <div className="loading-marquee">
-          <Marquee>
-            <span> Full Stack Developer</span> <span>Software Engineer</span>
-            <span> Full Stack Developer</span> <span>Software Engineer</span>
-          </Marquee>
+      <Marquee>
+        <span> Data Engineer</span>
+        <span>Cloud &amp; Analytics</span>
+        <span> Data Engineer</span>
+        <span>Cloud &amp; Analytics</span>
+      </Marquee>
+      <div
+        className={`loader-container ${
+          clicked ? "clicked" : loaded ? "loaded" : ""
+        }`}
+        onMouseMove={(e) => handleMouseMove(e)}
+      >
+        <div className="loader-content">
+          <p>Loading</p>
+          <span> {percent}%</span>
         </div>
-        <div
-          className={`loading-wrap ${clicked && "loading-clicked"}`}
-          onMouseMove={(e) => handleMouseMove(e)}
-        >
-          <div className="loading-hover"></div>
-          <div className={`loading-button ${loaded && "loading-complete"}`}>
-            <div className="loading-container">
-              <div className="loading-content">
-                <div className="loading-content-in">
-                  Loading <span>{percent}%</span>
-                </div>
-              </div>
-              <div className="loading-box"></div>
-            </div>
-            <div className="loading-content2">
-              <span>Welcome</span>
-            </div>
-          </div>
-        </div>
+        <p className="loader-welcome"> Welcome </p>
       </div>
     </>
   );
@@ -94,7 +78,6 @@ export default Loading;
 
 export const setProgress = (setLoading: (value: number) => void) => {
   let percent: number = 0;
-
   let interval = setInterval(() => {
     if (percent <= 50) {
       let rand = Math.round(Math.random() * 5);
@@ -118,7 +101,7 @@ export const setProgress = (setLoading: (value: number) => void) => {
   }
 
   function loaded() {
-    return new Promise<number>((resolve) => {
+    return new Promise((resolve) => {
       clearInterval(interval);
       interval = setInterval(() => {
         if (percent < 100) {
@@ -131,5 +114,6 @@ export const setProgress = (setLoading: (value: number) => void) => {
       }, 2);
     });
   }
+
   return { loaded, percent, clear };
 };
