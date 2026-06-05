@@ -10,7 +10,6 @@ import {
   CylinderCollider,
   RapierRigidBody,
 } from "@react-three/rapier";
-import "./styles/TechStack.css";
 
 const textureLoader = new THREE.TextureLoader();
 const imageUrls = [
@@ -24,7 +23,9 @@ const imageUrls = [
   "/images/javascript.webp",
 ];
 const textures = imageUrls.map((url) => textureLoader.load(url));
+
 const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);
+
 const spheres = [...Array(30)].map(() => ({
   scale: [0.7, 1, 0.8, 1, 1][Math.floor(Math.random() * 5)],
 }));
@@ -112,29 +113,14 @@ function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
   );
 }
 
-const techList = [
-  "Azure Data Factory",
-  "Databricks",
-  "PySpark",
-  "Snowflake",
-  "AWS Glue",
-  "Kafka",
-  "Delta Lake",
-  "Python",
-  "SQL",
-  "Airflow",
-  "Power BI",
-  "Terraform",
-];
-
 const TechStack = () => {
   const [isActive, setIsActive] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY || document.documentElement.scrollTop;
-      const workEl = document.getElementById("work");
-      if (!workEl) return;
-      const threshold = workEl.getBoundingClientRect().top;
+      const threshold = document
+        .getElementById("work")!
+        .getBoundingClientRect().top;
       setIsActive(scrollY > threshold);
     };
     document.querySelectorAll(".header a").forEach((elem) => {
@@ -170,11 +156,53 @@ const TechStack = () => {
   }, []);
 
   return (
-    <div className="techstack-section section-container">
-      <h2 className="techstack-title">My Techstack</h2>
-      <div className="techstack-tags">
-        {techList.map((tech, i) => (
-          <span key={i} className="tech-tag">
+    <>
+      <h2
+        style={{
+          textAlign: "center",
+          marginBottom: "1rem",
+          fontSize: "2rem",
+          fontWeight: 700,
+        }}
+      >
+        My Techstack
+      </h2>
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "0.6rem",
+          justifyContent: "center",
+          marginBottom: "1.5rem",
+          padding: "0 2rem",
+        }}
+      >
+        {[
+          "Azure Data Factory",
+          "Databricks",
+          "PySpark",
+          "Snowflake",
+          "AWS Glue",
+          "Kafka",
+          "Delta Lake",
+          "Python",
+          "SQL",
+          "Airflow",
+          "Power BI",
+          "Terraform",
+        ].map((tech, i) => (
+          <span
+            key={i}
+            style={{
+              background: "rgba(255,255,255,0.08)",
+              border: "1px solid rgba(255,255,255,0.2)",
+              color: "#fff",
+              padding: "0.35rem 0.9rem",
+              borderRadius: "999px",
+              fontSize: "0.82rem",
+              fontWeight: 500,
+            }}
+          >
             {tech}
           </span>
         ))}
@@ -192,14 +220,9 @@ const TechStack = () => {
           angle={0.2}
           color="white"
           castShadow
-          shadow-mapSize={[512, 512]}
         />
         <directionalLight position={[0, 5, -4]} intensity={4} />
-        <directionalLight
-          position={[0, -15, -0]}
-          intensity={4}
-          color="#7b7b7b"
-        />
+        <directionalLight position={[0, -15, -0]} intensity={4} color="#7b7b7b" />
         <Physics gravity={[0, 0, 0]}>
           <Pointer isActive={isActive} />
           {spheres.map(({ scale }, i) => (
@@ -216,7 +239,7 @@ const TechStack = () => {
           <N8AO distanceFalloff={1} aoRadius={1} intensity={4} />
         </EffectComposer>
       </Canvas>
-    </div>
+    </>
   );
 };
 
