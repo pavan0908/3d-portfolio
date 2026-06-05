@@ -22,6 +22,9 @@ const setCharacter = (
         CHARACTER_URL,
         async (gltf) => {
           const character = gltf.scene;
+          // Scale and position to fit the scene (camera is at z=24.7, y=13.1)
+          character.scale.set(8, 8, 8);
+          character.position.set(0, 0, 0);
           await renderer.compileAsync(character, camera, scene);
           character.traverse((child: any) => {
             if (child.isMesh) {
@@ -37,7 +40,6 @@ const setCharacter = (
             }
           });
           resolve(gltf);
-          // Pass null to safely skip character-specific bone animations
           setCharTimeline(null, camera);
           setAllTimeline();
           dracoLoader.dispose();
@@ -45,7 +47,6 @@ const setCharacter = (
         undefined,
         (error) => {
           console.error("Error loading GLTF model:", error);
-          // Still init timelines even if model fails
           setCharTimeline(null, camera);
           setAllTimeline();
           reject(error);
