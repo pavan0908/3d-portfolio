@@ -35,47 +35,49 @@ const Navbar = () => {
         }
       });
     });
-    window.addEventListener("resize", () => {
-      ScrollSmoother.refresh(true);
+
+    ScrollTrigger.create({
+      trigger: "#about",
+      start: "top 80%",
+      onEnter: () => {
+        gsap.to(".header", { backgroundColor: "#0a0a0a", duration: 0.3 });
+      },
+      onLeaveBack: () => {
+        gsap.to(".header", { backgroundColor: "transparent", duration: 0.3 });
+      },
     });
   }, []);
+
   return (
     <>
       <div className="header">
         <a href="/#" className="navbar-title" data-cursor="disable">
-          AM
+          PM
         </a>
-        <a
-          href="https://www.linkedin.com/in/akashrmalhotra/"
-          className="navbar-connect"
-          data-cursor="disable"
-          target="_blank"
-          rel="noreferrer"
-        >
-          linkedin.com/in/akashrmalhotra
-        </a>
-        <ul>
-          <li>
-            <a data-href="#about" href="#about">
-              <HoverLinks text="ABOUT" />
-            </a>
-          </li>
-          <li>
-            <a data-href="#work" href="#work">
-              <HoverLinks text="WORK" />
-            </a>
-          </li>
-          <li>
-            <a data-href="#contact" href="#contact">
-              <HoverLinks text="CONTACT" />
-            </a>
-          </li>
-        </ul>
-      </div>
+        <div className="header-right">
+          <ul>
+            <li>
+              <a data-href="#about" href="#about">
+                <HoverLinks text="ABOUT" />
+              </a>
+            </li>
+            <li>
+              <a data-href="#work" href="#work">
+                <HoverLinks text="WORK" />
+              </a>
+            </li>
+            <li>
+              <a data-href="#contact" href="#contact">
+                <HoverLinks text="CONTACT" />
+              </a>
+            </li>
+          </ul>
+        </div>
 
-      <div className="landing-circle1"></div>
-      <div className="landing-circle2"></div>
-      <div className="nav-fade"></div>
+        <div className="landing-circle1"></div>
+        <div className="landing-circle2"></div>
+        <div className="nav-fade"></div>
+      </div>
     </>
   );
 };
