@@ -6,7 +6,8 @@ const Career = () => {
       <div className="career-container">
         <h2>
           My career <span>&</span>
-          <br /> experience
+          <br />
+          experience
         </h2>
         <div className="career-info">
           <div className="career-timeline">
@@ -15,58 +16,46 @@ const Career = () => {
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Co-Founder</h4>
-                <h5>CallHQ.ai</h5>
+                <h4>Data Engineer</h4>
+                <h5>Providence Health</h5>
               </div>
-              <h3>NOW</h3>
+              <h3>2022–NOW</h3>
             </div>
             <p>
-              Building CallHQ.ai, a voice AI platform for
-              automating customer calls, support, and conversions.
+              Built Azure Data Factory and Databricks healthcare ingestion
+              pipelines, developed PySpark workflows in Azure Synapse, integrated
+              Event Hub and streaming pipelines, optimized Delta Lake performance,
+              and improved observability and governance for healthcare analytics.
             </p>
           </div>
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Adobe</h4>
-                <h5>6+ years · Noida</h5>
+                <h4>Data Engineer</h4>
+                <h5>Wells Fargo</h5>
               </div>
-              <h3>2017–24</h3>
+              <h3>2019–2022</h3>
             </div>
             <p>
-              Senior Lead Software Engineer (Feb 2024 – May 2024). Lead Software
-              Engineer (Feb 2021 – Feb 2024). Software Engineer II (Dec 2017 –
-              Feb 2021): internationalization, globalization, and localization for
-              Adobe Technical Communication Suite; functional and linguistic testing
-              strategy; in-house tooling; collaboration with product and engineering
-              for high-quality localized releases.
+              Designed AWS Glue, Lambda, and S3 pipelines, created PySpark and
+              Spark SQL workflows on EMR, integrated Kafka streaming for fraud
+              and risk monitoring, tuned Redshift performance, and automated
+              CI/CD with Jenkins, Terraform, and GitHub Actions.
             </p>
           </div>
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Consultant</h4>
-                <h5>Genpact Headstrong </h5>
+                <h4>Data Analyst</h4>
+                <h5>Target</h5>
               </div>
-              <h3>2016–17</h3>
+              <h3>2016–2019</h3>
             </div>
             <p>
-              Sep 2016 – Nov 2017. Developed and maintained WCF services consumed
-              by the UI; deployment support across environments; NUnit tests and
-              coverage; bug fixes from QA and users; database work.
-            </p>
-          </div>
-          <div className="career-info-box">
-            <div className="career-info-in">
-              <div className="career-role">
-                <h4>Sf Engineer</h4>
-                <h5>Infogain</h5>
-              </div>
-              <h3>2013-16</h3>
-            </div>
-            <p>
-              Software engineering across enterprise projects, contributing to
-              design, development, and delivery of business applications.
+              Built Power BI dashboards, automated reporting with SSIS and
+              Python, optimized SQL queries, and designed curated analytical
+              datasets to improve retail analytics and operational
+              decision-making.
             </p>
           </div>
         </div>
