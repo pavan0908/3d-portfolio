@@ -45,8 +45,7 @@ function SphereGeo({
   material,
   isActive,
 }: SphereProps) {
-  const api = useRef<RapierRigidBody | null>(null);
-
+  const api = useRef<RapierRigidBody>(null);
   useFrame((_state, delta) => {
     if (!isActive) return;
     delta = Math.min(0.1, delta);
@@ -60,33 +59,12 @@ function SphereGeo({
           -50 * delta * scale
         )
       );
-
     api.current?.applyImpulse(impulse, true);
   });
-
   return (
-    <RigidBody
-      linearDamping={0.75}
-      angularDamping={0.15}
-      friction={0.2}
-      position={[r(20), r(20) - 25, r(20) - 10]}
-      ref={api}
-      colliders={false}
-    >
+    <RigidBody linearDamping={4} angularDamping={1} friction={0.1} position={[r(20), r(20) - 25, r(20) - 10]} ref={api} colliders={false}>
       <BallCollider args={[scale]} />
-      <CylinderCollider
-        rotation={[Math.PI / 2, 0, 0]}
-        position={[0, 0, 1.2 * scale]}
-        args={[0.15 * scale, 0.275 * scale]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        scale={scale}
-        geometry={sphereGeometry}
-        material={material}
-        rotation={[0.3, 1, 1]}
-      />
+      <mesh castShadow receiveShadow scale={scale} geometry={sphereGeometry} material={material} />
     </RigidBody>
   );
 }
@@ -98,7 +76,6 @@ type PointerProps = {
 
 function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
   const ref = useRef<RapierRigidBody>(null);
-
   useFrame(({ pointer, viewport }) => {
     if (!isActive) return;
     const targetVec = vec.lerp(
@@ -111,22 +88,30 @@ function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
     );
     ref.current?.setNextKinematicTranslation(targetVec);
   });
-
   return (
-    <RigidBody
-      position={[100, 100, 100]}
-      type="kinematicPosition"
-      colliders={false}
-      ref={ref}
-    >
-      <BallCollider args={[2]} />
+    <RigidBody position={[0, 0, 0]} type="kinematicPosition" colliders={false} ref={ref}>
+      <CylinderCollider args={[0.01, 3]} />
     </RigidBody>
   );
 }
 
+const techList = [
+  "Azure Data Factory",
+  "Databricks",
+  "PySpark",
+  "Snowflake",
+  "AWS Glue",
+  "Kafka",
+  "Delta Lake",
+  "Python",
+  "SQL",
+  "Airflow",
+  "Power BI",
+  "Terraform",
+];
+
 const TechStack = () => {
   const [isActive, setIsActive] = useState(false);
-
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY || document.documentElement.scrollTop;
@@ -151,6 +136,7 @@ const TechStack = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
   const materials = useMemo(() => {
     return textures.map(
       (texture) =>
@@ -167,44 +153,27 @@ const TechStack = () => {
   }, []);
 
   return (
-    <div className="techstack">
-      <h2> My Techstack</h2>
-
-      <Canvas
-        shadows
-        gl={{ alpha: true, stencil: false, depth: false, antialias: false }}
-        camera={{ position: [0, 0, 20], fov: 32.5, near: 1, far: 100 }}
-        onCreated={(state) => (state.gl.toneMappingExposure = 1.5)}
-        className="tech-canvas"
-      >
-        <ambientLight intensity={1} />
-        <spotLight
-          position={[20, 20, 25]}
-          penumbra={1}
-          angle={0.2}
-          color="white"
-          castShadow
-          shadow-mapSize={[512, 512]}
-        />
-        <directionalLight position={[0, 5, -4]} intensity={2} />
+    <div className="techstack-section section-container">
+      <h2>My Techstack</h2>
+      <div className="techstack-tags">
+        {techList.map((tech, i) => (
+          <span key={i} className="tech-tag">{tech}</span>
+        ))}
+      </div>
+      <Canvas shadows gl={{ antialias: false }} dpr={[1, 1.5]} camera={{ position: [0, 0, 20], fov: 35, near: 1, far: 40 }}>
+        <ambientLight intensity={0.5} />
+        <spotLight position={[20, 20, 25]} penumbra={1} angle={0.2} color="white" castShadow shadow-mapSize={[512, 512]} />
+        <directionalLight position={[0, 5, -4]} intensity={4} />
+        <directionalLight position={[0, -15, -0]} intensity={4} color="#7b7b7b" />
         <Physics gravity={[0, 0, 0]}>
           <Pointer isActive={isActive} />
-          {spheres.map((props, i) => (
-            <SphereGeo
-              key={i}
-              {...props}
-              material={materials[Math.floor(Math.random() * materials.length)]}
-              isActive={isActive}
-            />
+          {spheres.map(({ scale }, i) => (
+            <SphereGeo key={i} scale={scale} material={materials[i % materials.length]} isActive={isActive} />
           ))}
         </Physics>
-        <Environment
-          files="/models/char_enviorment.hdr"
-          environmentIntensity={0.5}
-          environmentRotation={[0, 4, 2]}
-        />
-        <EffectComposer enableNormalPass={false}>
-          <N8AO color="#0f002c" aoRadius={2} intensity={1.15} />
+        <Environment files="/hdri/potsdamer_platz_1k.hdr" />
+        <EffectComposer disableNormalPass multisampling={0}>
+          <N8AO distanceFalloff={1} aoRadius={1} intensity={4} />
         </EffectComposer>
       </Canvas>
     </div>
