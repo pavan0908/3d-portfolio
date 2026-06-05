@@ -4,7 +4,6 @@ import * as THREE from "three";
 
 const CharacterModel = () => {
   useEffect(() => {
-    // Initialize scroll animations without 3D character
     const camera = new THREE.PerspectiveCamera(14.5, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.set(0, 13.1, 24.7);
     setCharTimeline(null, camera);
@@ -18,7 +17,7 @@ const CharacterModel = () => {
         position: "absolute",
         right: "5%",
         bottom: "0",
-        width: "420px",
+        width: "460px",
         maxWidth: "45vw",
         zIndex: 2,
         pointerEvents: "none",
@@ -28,13 +27,14 @@ const CharacterModel = () => {
       }}
     >
       <img
-        src="/images/pavan-character.png"
+        src="/images/Gemini_Generated_Image_trxxdntrxxdntrxx (1).png"
         alt="Pavan Mukkamala"
         style={{
           width: "100%",
           height: "auto",
           objectFit: "contain",
-          filter: "drop-shadow(0 0 40px rgba(34,211,238,0.25))",
+          filter: "drop-shadow(0 0 40px rgba(34,211,238,0.3))",
+          borderRadius: "50% 50% 0 0",
         }}
       />
     </div>
