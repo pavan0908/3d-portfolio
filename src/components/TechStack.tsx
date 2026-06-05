@@ -10,6 +10,7 @@ import {
   CylinderCollider,
   RapierRigidBody,
 } from "@react-three/rapier";
+import "./styles/TechStack.css";
 
 const textureLoader = new THREE.TextureLoader();
 const imageUrls = [
@@ -23,9 +24,7 @@ const imageUrls = [
   "/images/javascript.webp",
 ];
 const textures = imageUrls.map((url) => textureLoader.load(url));
-
 const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);
-
 const spheres = [...Array(30)].map(() => ({
   scale: [0.7, 1, 0.8, 1, 1][Math.floor(Math.random() * 5)],
 }));
@@ -62,9 +61,22 @@ function SphereGeo({
     api.current?.applyImpulse(impulse, true);
   });
   return (
-    <RigidBody linearDamping={4} angularDamping={1} friction={0.1} position={[r(20), r(20) - 25, r(20) - 10]} ref={api} colliders={false}>
+    <RigidBody
+      linearDamping={4}
+      angularDamping={1}
+      friction={0.1}
+      position={[r(20), r(20) - 25, r(20) - 10]}
+      ref={api}
+      colliders={false}
+    >
       <BallCollider args={[scale]} />
-      <mesh castShadow receiveShadow scale={scale} geometry={sphereGeometry} material={material} />
+      <mesh
+        castShadow
+        receiveShadow
+        scale={scale}
+        geometry={sphereGeometry}
+        material={material}
+      />
     </RigidBody>
   );
 }
@@ -89,7 +101,12 @@ function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
     ref.current?.setNextKinematicTranslation(targetVec);
   });
   return (
-    <RigidBody position={[0, 0, 0]} type="kinematicPosition" colliders={false} ref={ref}>
+    <RigidBody
+      position={[0, 0, 0]}
+      type="kinematicPosition"
+      colliders={false}
+      ref={ref}
+    >
       <CylinderCollider args={[0.01, 3]} />
     </RigidBody>
   );
@@ -115,9 +132,9 @@ const TechStack = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY || document.documentElement.scrollTop;
-      const threshold = document
-        .getElementById("work")!
-        .getBoundingClientRect().top;
+      const workEl = document.getElementById("work");
+      if (!workEl) return;
+      const threshold = workEl.getBoundingClientRect().top;
       setIsActive(scrollY > threshold);
     };
     document.querySelectorAll(".header a").forEach((elem) => {
@@ -154,21 +171,44 @@ const TechStack = () => {
 
   return (
     <div className="techstack-section section-container">
-      <h2>My Techstack</h2>
+      <h2 className="techstack-title">My Techstack</h2>
       <div className="techstack-tags">
         {techList.map((tech, i) => (
-          <span key={i} className="tech-tag">{tech}</span>
+          <span key={i} className="tech-tag">
+            {tech}
+          </span>
         ))}
       </div>
-      <Canvas shadows gl={{ antialias: false }} dpr={[1, 1.5]} camera={{ position: [0, 0, 20], fov: 35, near: 1, far: 40 }}>
+      <Canvas
+        shadows
+        gl={{ antialias: false }}
+        dpr={[1, 1.5]}
+        camera={{ position: [0, 0, 20], fov: 35, near: 1, far: 40 }}
+      >
         <ambientLight intensity={0.5} />
-        <spotLight position={[20, 20, 25]} penumbra={1} angle={0.2} color="white" castShadow shadow-mapSize={[512, 512]} />
+        <spotLight
+          position={[20, 20, 25]}
+          penumbra={1}
+          angle={0.2}
+          color="white"
+          castShadow
+          shadow-mapSize={[512, 512]}
+        />
         <directionalLight position={[0, 5, -4]} intensity={4} />
-        <directionalLight position={[0, -15, -0]} intensity={4} color="#7b7b7b" />
+        <directionalLight
+          position={[0, -15, -0]}
+          intensity={4}
+          color="#7b7b7b"
+        />
         <Physics gravity={[0, 0, 0]}>
           <Pointer isActive={isActive} />
           {spheres.map(({ scale }, i) => (
-            <SphereGeo key={i} scale={scale} material={materials[i % materials.length]} isActive={isActive} />
+            <SphereGeo
+              key={i}
+              scale={scale}
+              material={materials[i % materials.length]}
+              isActive={isActive}
+            />
           ))}
         </Physics>
         <Environment files="/hdri/potsdamer_platz_1k.hdr" />
