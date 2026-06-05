@@ -5,32 +5,32 @@ import { MdArrowBack, MdArrowForward } from "react-icons/md";
 
 const projects = [
   {
-    title: "CallHQ",
-    category: "Voice AI Calling Platform",
-    tools: "Voice AI, Calling Automation, CRM Integrations",
+    title: "Healthcare Data Pipeline",
+    category: "Azure ETL/ELT Modernization",
+    tools: "Azure Data Factory, Databricks, PySpark, Azure Synapse, Delta Lake",
     image: "/images/callhq.png",
-    link: "https://callhq.ai",
+    link: "https://github.com/pavan0908",
   },
   {
-    title: "Whatsapp Automation",
-    category: "WABA Application",
-    tools: "WhatsApp Business API, Workflow Automation, Notifications",
+    title: "Real-Time Streaming Pipeline",
+    category: "Event-Driven Ingestion on Azure",
+    tools: "Azure Event Hub, Spark Structured Streaming, Kafka, Delta Live Tables",
     image: "/images/whatsapp.png",
-    link: "https://whatsapp.callhq.ai",
+    link: "https://github.com/pavan0908",
   },
   {
-    title: "Broki",
-    category: "Real Estate Platform for FnB Industry",
-    tools: "Property Discovery, Lead Management, Marketplace Workflows",
+    title: "Banking Reporting Platform",
+    category: "AWS Cloud Data Engineering",
+    tools: "AWS Glue, Lambda, S3, EMR, Redshift, Kafka, Terraform, GitHub Actions",
     image: "/images/broki.png",
-    link: "https://broki.in",
+    link: "https://github.com/pavan0908",
   },
   {
-    title: "Orrdr.com",
-    category: "Ecommerce Platform and Mobile App",
-    tools: "Ecommerce, Mobile Experience, Order Management",
+    title: "Retail Analytics Dashboards",
+    category: "BI & Reporting Automation",
+    tools: "Power BI, SQL Server, SSIS, Python, Tableau",
     image: "/images/orrdr.png",
-    link: "https://orrdr.com",
+    link: "https://github.com/pavan0908",
   },
 ];
 
@@ -66,9 +66,7 @@ const Work = () => {
         <h2>
           My <span>Work</span>
         </h2>
-
         <div className="carousel-wrapper">
-          {/* Navigation Arrows */}
           <button
             className="carousel-arrow carousel-arrow-left"
             onClick={goToPrev}
@@ -85,8 +83,6 @@ const Work = () => {
           >
             <MdArrowForward />
           </button>
-
-          {/* Slides */}
           <div className="carousel-track-container">
             <div
               className="carousel-track"
@@ -124,14 +120,13 @@ const Work = () => {
               ))}
             </div>
           </div>
-
-          {/* Dot Indicators */}
           <div className="carousel-dots">
             {projects.map((_, index) => (
               <button
                 key={index}
-                className={`carousel-dot ${index === currentIndex ? "carousel-dot-active" : ""
-                  }`}
+                className={`carousel-dot ${
+                  index === currentIndex ? "carousel-dot-active" : ""
+                }`}
                 onClick={() => goToSlide(index)}
                 aria-label={`Go to project ${index + 1}`}
                 data-cursor="disable"
