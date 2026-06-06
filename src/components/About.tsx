@@ -22,14 +22,6 @@ const About = () => {
           practices to build efficient, secure, and scalable data ecosystems
           that drive business growth and innovation.
         </p>
-        <p className="para">
-          <strong>Skills &amp; Technologies</strong><br />
-          Azure &bull; AWS &bull; Databricks &bull; PySpark &bull; Apache Spark
-          &bull; Snowflake &bull; Kafka &bull; SQL &bull; Python &bull; Azure
-          Data Factory &bull; AWS Glue &bull; Delta Lake &bull; Azure Synapse
-          &bull; Redshift &bull; Airflow &bull; Terraform &bull; GitHub Actions
-          &bull; Power BI &bull; Tableau
-        </p>
       </div>
     </div>
   );
