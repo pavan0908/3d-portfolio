@@ -23,15 +23,6 @@ const projects: Project[] = [
     description: "End-to-end ingestion pipeline processing 50M+ daily records from EHR systems into a governed Delta Lakehouse. Accelerated claims visibility by 30%, integrated Azure Event Hub for real-time patient monitoring, and enforced data governance with RBAC and lineage tracking.",
   },
   {
-    title: "Real-Time Streaming Pipeline",
-    category: "Event-Driven Ingestion on Azure — Providence Health",
-    tools: "Azure Event Hub, Spark Structured Streaming, Kafka, Delta Live Tables, Apache Airflow",
-    color: "#a78bfa",
-    icon: "KAFKA",
-    link: "https://github.com/pavan0908",
-    description: "Low-latency event ingestion architecture processing 100K events/sec with auto-scaling consumers, supporting proactive patient monitoring and real-time operational intelligence across clinical applications.",
-  },
-  {
     title: "Banking Reporting Platform",
     category: "AWS Cloud Data Engineering — Wells Fargo",
     tools: "AWS Glue, Lambda, S3, EMR, Redshift, Kafka, Terraform, GitHub Actions, Jenkins",
