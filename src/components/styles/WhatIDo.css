@@ -27,14 +27,17 @@
   font-weight: 600;
   flex-shrink: 0;
   min-width: 180px;
+  color: #ffffff;
 }
 
 .hat-h2 {
   font-style: italic;
+  color: #ffffff;
 }
 
 .do-h2 {
   font-style: italic;
+  color: #ffffff;
 }
 
 .what-content {
@@ -58,30 +61,6 @@
   font-weight: 400;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.8);
-  margin: 0;
-}
-
-.what-skills {
-  margin-top: 0.5rem;
-  padding: 1.2rem 1.5rem;
-  border: 1px solid rgba(0, 229, 255, 0.25);
-  border-radius: 8px;
-  background: rgba(0, 229, 255, 0.04);
-}
-
-.skills-title {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #00e5ff;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin: 0 0 0.6rem 0;
-}
-
-.skills-list {
-  font-size: 0.9rem;
-  line-height: 1.8;
-  color: rgba(255, 255, 255, 0.75);
   margin: 0;
 }
 
