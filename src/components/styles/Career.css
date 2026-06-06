@@ -8,8 +8,8 @@
   opacity: 1;
   height: auto;
   margin: auto;
-  margin-bottom: 250px;
-  padding: 120px 0px;
+  margin-bottom: 60px;
+  padding: 80px 0px;
 }
 
 .career-section h2 {
@@ -26,7 +26,7 @@
   margin-bottom: 90px;
 }
 
-.career-section h2>span {
+.career-section h2 > span {
   font-family: "Geist", sans-serif;
   font-weight: 300;
 }
@@ -50,7 +50,7 @@
   font-weight: 300;
   margin: 0;
   line-height: 24px;
-  color: rgba(255,255,255,0.72);
+  color: rgba(255, 255, 255, 0.72);
 }
 
 .career-info-in {
@@ -65,7 +65,7 @@
   margin: 0;
   font-weight: 500;
   line-height: 26px;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .career-info h4 {
@@ -92,7 +92,12 @@
   transform: translateX(-50%);
   width: 3px;
   height: 100%;
-  background-image: linear-gradient(to top, #14b8a6 20%, var(--accentColor) 50%, transparent 95%);
+  background-image: linear-gradient(
+    to top,
+    #14b8a6 20%,
+    var(--accentColor) 50%,
+    transparent 95%
+  );
   max-height: 0%;
 }
 
@@ -105,13 +110,28 @@
   width: 10px;
   height: 10px;
   border-radius: 50px;
-  box-shadow: 0px 0px 5px 2px #67e8f9, 0px 0px 15px 8px #5eead4, 0px 0px 110px 20px #a5f3fc;
+  box-shadow: 0px 0px 5px 2px #67e8f9, 0px 0px 15px 8px #5eead4,
+    0px 0px 110px 20px #a5f3fc;
   animation: timeline 0.8s linear infinite forwards;
 }
 
 @keyframes timeline {
-  10%, 20%, 50%, 70%, 90% { box-shadow: 0px 0px 5px 2px #67e8f9; }
-  10%, 30%, 0%, 100%, 64%, 80% { box-shadow: 0px 0px 5px 2px #67e8f9, 0px 0px 15px 5px #5eead4, 0px 0px 110px 20px #a5f3fc; }
+  10%,
+  20%,
+  50%,
+  70%,
+  90% {
+    box-shadow: 0px 0px 5px 2px #67e8f9;
+  }
+  10%,
+  30%,
+  0%,
+  100%,
+  64%,
+  80% {
+    box-shadow: 0px 0px 5px 2px #67e8f9, 0px 0px 15px 5px #5eead4,
+      0px 0px 110px 20px #a5f3fc;
+  }
 }
 
 @media only screen and (max-width: 1400px) {
@@ -143,10 +163,10 @@
 
 @media only screen and (max-width: 1025px) {
   .career-section {
-    padding: 70px 0px;
-    padding-top: 220px;
-    margin-top: -200px;
-    margin-bottom: 0;
+    padding: 60px 0px;
+    padding-top: 80px;
+    margin-top: 0;
+    margin-bottom: 40px;
   }
 }
 
@@ -191,8 +211,8 @@
     padding-left: 5%;
   }
   .career-section {
-    padding-top: 90px;
-    margin-top: -70px;
+    padding-top: 60px;
+    margin-top: 0;
     align-items: start;
     place-items: inherit;
     justify-content: left;
