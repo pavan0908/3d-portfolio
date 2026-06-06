@@ -31,7 +31,7 @@ const Contact = () => {
             <h4>Phone</h4>
             <p>+1 913 391 2998</p>
             <h4>Location</h4>
-            <p>Kansas City, KS, USA</p>
+                          <p>Overland Park, KS, USA</p>
           </div>
           <div className="contact-box">
             <h4>Social</h4>
