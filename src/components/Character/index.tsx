@@ -7,8 +7,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 const CharacterModel = () => {
   useEffect(() => {
-    // Animate the avatar on scroll: slide out + fade as user scrolls past landing
     const ctx = gsap.context(() => {
+      // Animate the avatar and landing container out as user scrolls past hero
       const tl1 = gsap.timeline({
         scrollTrigger: {
           trigger: ".landing-section",
@@ -18,7 +18,6 @@ const CharacterModel = () => {
           invalidateOnRefresh: true,
         },
       });
-
       tl1
         .fromTo(
           ".avatar-wrapper",
@@ -32,20 +31,6 @@ const CharacterModel = () => {
           { opacity: 0, y: "40%", duration: 0.8 },
           0
         );
-
-      const tl2 = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".about-section",
-          start: "center 55%",
-          end: "bottom top",
-          scrub: true,
-          invalidateOnRefresh: true,
-        },
-      });
-
-      tl2
-        .to(".about-section", { y: "30%", duration: 6 }, 0)
-        .to(".about-section", { opacity: 0, delay: 3, duration: 2 }, 0);
     });
 
     // Set up career + other scroll timelines
@@ -58,7 +43,6 @@ const CharacterModel = () => {
     <div className="character-model">
       {/* Glow backdrop */}
       <div className="character-rim" style={{ opacity: 0 }} />
-
       {/* Avatar with glow ring */}
       <div className="avatar-wrapper">
         <div className="avatar-glow-ring" />
