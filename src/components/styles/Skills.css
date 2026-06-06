@@ -2,13 +2,12 @@
 
 .skills-section {
   width: 100%;
-  min-height: 100vh;
-  padding: 5rem 3rem;
+  padding: 5rem 3rem 4rem;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .skills-header {
@@ -83,14 +82,13 @@
   flex-direction: column;
   gap: 0.9rem;
   overflow: hidden;
-  /* Subtle idle shimmer on top edge */
   box-shadow:
     0 0 0 1px rgba(0, 229, 255, 0.05),
     0 8px 32px rgba(0, 0, 0, 0.5),
     0 1px 0 rgba(0, 229, 255, 0.15) inset;
 }
 
-/* 3D raised top-edge highlight — simulates depth */
+/* 3D raised top-edge highlight */
 .skill-card-inner::before {
   content: "";
   position: absolute;
@@ -127,11 +125,7 @@
 
 /* ===== HOVER 3D TILT ===== */
 .skill-card:hover .skill-card-inner {
-  transform:
-    rotateX(8deg)
-    rotateY(-8deg)
-    translateZ(20px)
-    scale(1.02);
+  transform: rotateX(8deg) rotateY(-8deg) translateZ(20px) scale(1.02);
   border-color: rgba(0, 229, 255, 0.55);
   box-shadow:
     -12px 20px 60px rgba(0, 229, 255, 0.2),
@@ -225,7 +219,7 @@
 
 @media (max-width: 640px) {
   .skills-section {
-    padding: 4rem 1.5rem;
+    padding: 4rem 1.5rem 3rem;
   }
   .skills-grid {
     grid-template-columns: 1fr;
