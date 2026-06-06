@@ -6,24 +6,29 @@ const About = () => {
       <div className="about-me">
         <h3 className="title">About Me</h3>
         <p className="para">
-          I am a Data Engineer with 4 years of experience building enterprise-scale
-          cloud data platforms using Azure Data Factory, Databricks, PySpark,
-          Snowflake, AWS Glue, Lambda, S3, and Spark. I specialize in data
-          ingestion, transformation, modeling, streaming, orchestration, and
-          CI/CD automation to deliver trusted, analytics-ready datasets.
+          I am a Data Engineer passionate about building scalable, reliable,
+          and high-performance data solutions that transform raw data into
+          meaningful business insights. I specialize in designing ETL/ELT
+          pipelines, cloud-native data platforms, real-time streaming
+          architectures, and modern analytics solutions using Azure, AWS,
+          Databricks, PySpark, Snowflake, Kafka, and SQL.
         </p>
         <p className="para">
-          I have supported cloud modernization initiatives in healthcare and
-          banking, improved reporting throughput by 30%, optimized distributed
-          Spark workloads using Delta Lake techniques, and built metadata-driven
-          ETL frameworks. I design dimensional data models supporting scalable
-          analytics, regulatory reporting, and data governance with lineage
-          traceability across enterprise platforms.
+          My experience includes developing enterprise-scale data pipelines,
+          optimizing big data workloads, implementing data governance and
+          automation frameworks, and delivering analytics-ready datasets that
+          empower organizations to make data-driven decisions. I am committed
+          to leveraging modern cloud technologies and best engineering
+          practices to build efficient, secure, and scalable data ecosystems
+          that drive business growth and innovation.
         </p>
         <p className="para">
-          I hold a Master of Big Data Analytics and Information Technology from
-          the University of Central Missouri and am AWS Certified Solutions
-          Architect (Associate).
+          <strong>Skills &amp; Technologies</strong><br />
+          Azure &bull; AWS &bull; Databricks &bull; PySpark &bull; Apache Spark
+          &bull; Snowflake &bull; Kafka &bull; SQL &bull; Python &bull; Azure
+          Data Factory &bull; AWS Glue &bull; Delta Lake &bull; Azure Synapse
+          &bull; Redshift &bull; Airflow &bull; Terraform &bull; GitHub Actions
+          &bull; Power BI &bull; Tableau
         </p>
       </div>
     </div>
