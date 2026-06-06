@@ -1,77 +1,88 @@
 import { useEffect } from "react";
-import { setCharTimeline, setAllTimeline } from "../utils/GsapScroll";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { setAllTimeline } from "../utils/GsapScroll";
+
+gsap.registerPlugin(ScrollTrigger);
+
+// Avatar image hosted on a reliable CDN (same image already used on site)
+const AVATAR_URL =
+  "https://raw.githubusercontent.com/pavan0908/3d-portfolio/main/src/components/Character/utils/avatar.png";
 
 const CharacterModel = () => {
   useEffect(() => {
-    setCharTimeline(null, null);
+    // Animate the avatar container on scroll: slide + fade out as user scrolls past landing
+    const ctx = gsap.context(() => {
+      const tl1 = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".landing-section",
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+          invalidateOnRefresh: true,
+        },
+      });
+
+      tl1
+        .fromTo(
+          ".avatar-wrapper",
+          { x: 0, opacity: 1, scale: 1 },
+          { x: "15%", opacity: 0, scale: 0.92, duration: 1 },
+          0
+        )
+        .fromTo(
+          ".landing-container",
+          { opacity: 1, y: "0%" },
+          { opacity: 0, y: "40%", duration: 0.8 },
+          0
+        );
+
+      const tl2 = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".about-section",
+          start: "center 55%",
+          end: "bottom top",
+          scrub: true,
+          invalidateOnRefresh: true,
+        },
+      });
+
+      tl2
+        .to(".about-section", { y: "30%", duration: 6 }, 0)
+        .to(".about-section", { opacity: 0, delay: 3, duration: 2 }, 0);
+    });
+
+    // Set up career + other scroll timelines
     setAllTimeline();
+
+    return () => ctx.revert();
   }, []);
 
   return (
     <div className="character-model">
       {/* Glow backdrop */}
-      <div
-        className="character-rim"
-        style={{ opacity: 0 }}
-      />
+      <div className="character-rim" style={{ opacity: 0 }} />
 
-      {/* Avatar image — right-aligned to match original 3D model position */}
-      <div
-        style={{
-          position: "absolute",
-          bottom: 0,
-          right: "5%",
-          width: "420px",
-          maxWidth: "55vw",
-          height: "auto",
-          zIndex: 2,
-          display: "flex",
-          alignItems: "flex-end",
-          justifyContent: "center",
-        }}
-      >
-        {/* Cyan glow ring behind avatar */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: "-20px",
-            left: "50%",
-            transform: "translateX(-50%)",
-            width: "380px",
-            height: "380px",
-            borderRadius: "50%",
-            background:
-              "radial-gradient(ellipse at center, rgba(34,211,238,0.18) 0%, transparent 70%)",
-            pointerEvents: "none",
-            zIndex: 0,
-          }}
-        />
-
-        {/* Circular avatar */}
-        <div
-          style={{
-            position: "relative",
-            zIndex: 1,
-            width: "380px",
-            height: "380px",
-            maxWidth: "55vw",
-            maxHeight: "55vw",
-            borderRadius: "50%",
-            overflow: "hidden",
-            border: "2px solid rgba(34,211,238,0.3)",
-            boxShadow:
-              "0 0 40px rgba(34,211,238,0.2), 0 0 80px rgba(34,211,238,0.1)",
-          }}
-        >
+      {/* Avatar image with glow ring */}
+      <div className="avatar-wrapper">
+        <div className="avatar-glow-ring" />
+        <div className="avatar-circle">
           <img
-            src="/images/Gemini_Generated_Image_trxxdntrxxdntrxx (1).png"
+            src="https://i.postimg.cc/Y91MbgwJ/pavan-avatar.png"
             alt="Pavan Mukkamala - Data Engineer"
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              objectPosition: "center top",
-              display: "block",
+            onError={(e) => {
+              // Fallback: show initials if image fails
+              const target = e.currentTarget as HTMLImageElement;
+              target.style.display = "none";
+              const parent = target.parentElement;
+              if (parent && !parent.querySelector(".avatar-initials")) {
+                const initials = document.createElement("div");
+                initials.className = "avatar-initials";
+                initials.textContent = "PM";
+                initials.style.cssText =
+                  "width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:5rem;font-weight:800;color:#00e5ff;font-family:Geist,sans-serif;";
+                parent.appendChild(initials);
+              }
             }}
           />
         </div>
