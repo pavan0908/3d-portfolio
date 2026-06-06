@@ -15,39 +15,39 @@ type Project = {
 const projects: Project[] = [
   {
     title: "Healthcare Data Pipeline",
-    category: "Azure ETL/ELT Modernization",
-    tools: "Azure Data Factory, Databricks, PySpark, Azure Synapse, Delta Lake",
+    category: "Azure ETL/ELT Modernization — Providence Health",
+    tools: "Azure Data Factory, Databricks, PySpark, Azure Synapse, Delta Lake, Azure Key Vault",
     color: "#22d3ee",
     icon: "ADF",
     link: "https://github.com/pavan0908",
-    description: "End-to-end ingestion pipeline processing 50M+ daily records from EHR systems into a governed Delta Lakehouse with full data quality and lineage.",
+    description: "End-to-end ingestion pipeline processing 50M+ daily records from EHR systems into a governed Delta Lakehouse. Accelerated claims visibility by 30%, integrated Azure Event Hub for real-time patient monitoring, and enforced data governance with RBAC and lineage tracking.",
   },
   {
     title: "Real-Time Streaming Pipeline",
-    category: "Event-Driven Ingestion on Azure",
-    tools: "Azure Event Hub, Spark Structured Streaming, Kafka, Delta Live Tables",
+    category: "Event-Driven Ingestion on Azure — Providence Health",
+    tools: "Azure Event Hub, Spark Structured Streaming, Kafka, Delta Live Tables, Apache Airflow",
     color: "#a78bfa",
     icon: "KAFKA",
     link: "https://github.com/pavan0908",
-    description: "Low-latency event ingestion architecture processing 100K events/sec with auto-scaling consumers and real-time analytics on Delta Live Tables.",
+    description: "Low-latency event ingestion architecture processing 100K events/sec with auto-scaling consumers, supporting proactive patient monitoring and real-time operational intelligence across clinical applications.",
   },
   {
     title: "Banking Reporting Platform",
-    category: "AWS Cloud Data Engineering",
-    tools: "AWS Glue, Lambda, S3, EMR, Redshift, Kafka, Terraform, GitHub Actions",
+    category: "AWS Cloud Data Engineering — Wells Fargo",
+    tools: "AWS Glue, Lambda, S3, EMR, Redshift, Kafka, Terraform, GitHub Actions, Jenkins",
     color: "#34d399",
     icon: "AWS",
     link: "https://github.com/pavan0908",
-    description: "Serverless reporting platform on AWS consolidating fraud detection signals, risk metrics, and compliance reports for 10+ business units.",
+    description: "Serverless reporting platform on AWS consolidating fraud detection signals, risk metrics, and compliance reports for 10+ business units. Improved transaction processing efficiency by 30% and release reliability by 20% with CI/CD automation.",
   },
   {
     title: "Retail Analytics Dashboards",
-    category: "BI & Reporting Automation",
+    category: "BI & Reporting Automation — Target",
     tools: "Power BI, SQL Server, SSIS, Python, Tableau",
     color: "#fb923c",
     icon: "PBI",
     link: "https://github.com/pavan0908",
-    description: "Self-service analytics layer with automated ETL, parameterized Power BI reports, and Python-driven data refresh for retail KPI monitoring.",
+    description: "Self-service analytics layer with automated ETL via SSIS and Python, parameterized Power BI reports improving retail sales visibility by 30%, and optimized SQL queries improving dashboard refresh efficiency by 20%.",
   },
 ];
 
@@ -65,36 +65,49 @@ const Work = () => {
   const project = projects[current];
 
   return (
-    <div className="work" id="workDiv">
+    <section className="work" id="work">
       <div className="work-container">
-        <h2>
-          My <span style={{ color: "var(--accentColor)" }}>Work</span>
-        </h2>
+        <h2>My <span>Work</span></h2>
         <div className="work-content">
           {/* Project Card Visual */}
-          <div className="work-visual" style={{ borderColor: project.color + "55" }}>
-            <div className="work-visual-bg" style={{ background: `radial-gradient(ellipse at 30% 40%, ${project.color}18 0%, transparent 70%)` }} />
-            <div className="work-badge" style={{ color: project.color, borderColor: project.color + "44", background: project.color + "11" }}>
+          <div className="work-visual">
+            <div className="work-visual-bg" />
+            <span
+              className="work-badge"
+              style={{ color: project.color, borderColor: project.color }}
+            >
               {project.icon}
-            </div>
+            </span>
             <h3 className="work-project-title">{project.title}</h3>
-            <p className="work-category" style={{ color: project.color }}>{project.category}</p>
+            <p className="work-category" style={{ color: project.color }}>
+              {project.category}
+            </p>
             <p className="work-description">{project.description}</p>
             <div className="work-tools">
               {project.tools.split(", ").map((tool) => (
-                <span key={tool} className="work-tool-tag" style={{ borderColor: project.color + "44" }}>
+                <span
+                  className="work-tool-tag"
+                  key={tool}
+                  style={{ borderColor: project.color }}
+                >
                   {tool}
                 </span>
               ))}
             </div>
-            <a href={project.link} target="_blank" rel="noopener noreferrer" className="work-link" style={{ color: project.color }}>
-              View on GitHub ↗
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noreferrer"
+              className="work-link"
+              style={{ color: project.color }}
+            >
+              View on GitHub &#8599;
             </a>
           </div>
 
           {/* Navigation */}
           <div className="work-nav">
-            <button onClick={prev} className="work-nav-btn" aria-label="Previous">
+            <button className="work-nav-btn" onClick={prev} aria-label="Previous">
               <MdArrowBack />
             </button>
             <div className="work-dots">
@@ -107,13 +120,13 @@ const Work = () => {
                 />
               ))}
             </div>
-            <button onClick={next} className="work-nav-btn" aria-label="Next">
+            <button className="work-nav-btn" onClick={next} aria-label="Next">
               <MdArrowForward />
             </button>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
