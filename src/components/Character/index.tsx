@@ -25,10 +25,10 @@ const CharacterModel = () => {
         bottom: 0,
         left: "50%",
         transform: "translateX(-50%)",
-        width: "340px",
-        height: "340px",
+        width: "360px",
+        height: "360px",
         borderRadius: "50%",
-        background: "radial-gradient(ellipse at center, rgba(34,211,238,0.18) 0%, transparent 70%)",
+        background: "radial-gradient(ellipse at center, rgba(34,211,238,0.20) 0%, transparent 70%)",
         pointerEvents: "none",
       }} />
 
@@ -37,12 +37,13 @@ const CharacterModel = () => {
         src="/images/Gemini_Generated_Image_trxxdntrxxdntrxx (1).png"
         alt="Pavan Mukkamala - Data Engineer"
         style={{
-          width: "340px",
+          width: "360px",
           maxWidth: "100%",
           objectFit: "contain",
           position: "relative",
           zIndex: 1,
-          filter: "drop-shadow(0 0 24px rgba(34,211,238,0.25))",
+          mixBlendMode: "screen",
+          filter: "drop-shadow(0 0 28px rgba(34,211,238,0.3))",
         }}
       />
     </div>
