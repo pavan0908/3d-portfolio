@@ -7,56 +7,48 @@ type SkillGroup = {
 
 const skillGroups: SkillGroup[] = [
   {
-    category: "Cloud Platforms",
-    skills: ["Microsoft Azure", "AWS", "Google Cloud (GCP)", "Snowflake"],
+    category: "Cloud Data Platforms",
+    skills: ["Microsoft Azure", "AWS", "Snowflake", "Azure Data Factory", "Azure Databricks", "Azure Synapse", "Azure Data Lake Gen2", "AWS Glue", "Lambda", "S3", "EMR", "Redshift", "Microsoft Fabric"],
   },
   {
-    category: "Data Pipelines & ETL",
-    skills: ["Azure Data Factory", "AWS Glue", "Matillion", "Talend", "Airflow", "dbt"],
+    category: "Big Data & Streaming",
+    skills: ["Apache Spark", "PySpark", "Spark SQL", "Kafka", "Hadoop", "Hive", "Delta Lake", "Spark Structured Streaming", "Azure Event Hub", "Apache Airflow", "Delta Live Tables"],
   },
   {
-    category: "Big Data & Processing",
-    skills: ["Apache Spark", "PySpark", "Databricks", "Hadoop", "Hive", "HDFS"],
+    category: "Programming & Databases",
+    skills: ["Python", "SQL", "Scala", "Shell Scripting", "SQL Server", "PostgreSQL", "MySQL", "Oracle", "MongoDB"],
   },
   {
-    category: "Streaming & Messaging",
-    skills: ["Apache Kafka", "Azure Event Hubs", "AWS Kinesis", "Spark Streaming"],
+    category: "ETL, Modeling & Warehousing",
+    skills: ["ETL/ELT Processing", "Informatica", "Talend", "SSIS", "Dimensional Modeling", "Star Schema", "Snowflake Schema", "Lakehouse Architecture", "Metadata-Driven Pipelines"],
   },
   {
-    category: "Databases & Warehousing",
-    skills: ["Snowflake", "Azure Synapse", "Redshift", "BigQuery", "Delta Lake", "PostgreSQL", "MySQL", "MongoDB"],
+    category: "DevOps, Governance & Monitoring",
+    skills: ["Azure DevOps", "GitHub Actions", "Terraform", "Jenkins", "CI/CD Pipelines", "Azure Monitor", "CloudWatch", "Datadog", "RBAC", "Data Governance"],
   },
   {
-    category: "Programming & Scripting",
-    skills: ["Python", "SQL", "PySpark", "Bash", "Scala"],
-  },
-  {
-    category: "BI & Analytics",
-    skills: ["Power BI", "Tableau", "Looker", "Azure Purview"],
-  },
-  {
-    category: "DevOps & Infrastructure",
-    skills: ["Terraform", "Docker", "Kubernetes", "Azure DevOps", "GitHub Actions", "CI/CD"],
+    category: "Analytics & BI",
+    skills: ["Power BI", "Tableau", "Advanced SQL Analytics", "Predictive Analytics", "Dashboard Development", "KPI Reporting", "Exploratory Data Analysis"],
   },
 ];
 
 const TechStack = () => {
   return (
-    <section className="techstack-section" id="techstack">
-      <div className="techstack-wrapper">
-        <h2 className="techstack-heading">
-          <span className="ts-accent">SKILLS</span> &amp; TECH STACK
+    <section className="techstack-section">
+      <div className="techstack-container">
+        <h2>
+          SKILLS <span>&</span> TECH STACK
         </h2>
         <p className="techstack-sub">
-          10+ years engineering data platforms across Azure, AWS, and GCP
+          4 years engineering data platforms across Azure and AWS
         </p>
         <div className="techstack-grid">
           {skillGroups.map((group) => (
-            <div key={group.category} className="skill-group">
-              <h4 className="skill-category">{group.category}</h4>
-              <div className="skill-tags">
+            <div className="techstack-group" key={group.category}>
+              <h4>{group.category}</h4>
+              <div className="techstack-pills">
                 {group.skills.map((skill) => (
-                  <span key={skill} className="skill-tag">
+                  <span className="techstack-pill" key={skill}>
                     {skill}
                   </span>
                 ))}
