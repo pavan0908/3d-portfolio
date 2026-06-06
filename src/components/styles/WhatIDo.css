@@ -34,169 +34,77 @@
 }
 
 .do-h2 {
-  color: var(--accentColor);
+  font-style: italic;
 }
 
-/* Cards container */
-.what-box-in {
-  flex: 1;
+.what-content {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 1.2rem;
+  flex: 1;
 }
 
-/* Individual card */
-.what-noTouch {
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 1.4rem 0;
-  cursor: default;
-  overflow: hidden;
-  transition: padding 0.4s ease;
+.what-subtitle {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #00e5ff;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-.what-noTouch:last-child {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-/* Card header row */
-.what-title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.what-title h3 {
-  font-size: 1.05rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
-  transition: color 0.3s;
-  letter-spacing: 0.01em;
+.what-para {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.8);
   margin: 0;
 }
 
-/* Arrow indicator */
-.what-arrow {
-  width: 10px;
-  height: 10px;
-  border-right: 2px solid var(--accentColor);
-  border-bottom: 2px solid var(--accentColor);
-  transform: rotate(45deg);
-  flex-shrink: 0;
-  transition: transform 0.35s ease;
+.what-skills {
+  margin-top: 0.5rem;
+  padding: 1.2rem 1.5rem;
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  border-radius: 8px;
+  background: rgba(0, 229, 255, 0.04);
 }
 
-/* Collapsed content - hidden by default */
-.what-content {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.45s ease, opacity 0.35s ease, padding 0.3s ease;
-  padding-top: 0;
-}
-
-.what-content p {
-  font-size: 0.88rem;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.65);
-  margin: 0 0 1rem 0;
-  max-width: 600px;
-}
-
-.what-content h5 {
-  font-size: 0.7rem;
-  font-weight: 700;
+.skills-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #00e5ff;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--accentColor);
-  margin: 0 0 0.65rem 0;
+  margin: 0 0 0.6rem 0;
 }
 
-.what-content-flex {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
+.skills-list {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0;
 }
 
-.what-tags {
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 0.8);
-  padding: 0.25rem 0.75rem;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 500;
-  background: rgba(255, 255, 255, 0.05);
-  transition: background 0.2s, border-color 0.2s;
-  white-space: nowrap;
-}
-
-.what-tags:hover {
-  background: rgba(34, 211, 238, 0.12);
-  border-color: rgba(34, 211, 238, 0.4);
-  color: #fff;
-}
-
-/* === Hover expand on desktop (no-touch) === */
-.what-noTouch:hover .what-content,
-.what-content-active .what-content {
-  max-height: 400px;
-  opacity: 1;
-  padding-top: 1rem;
-}
-
-.what-noTouch:hover .what-title h3,
-.what-content-active .what-title h3 {
-  color: #fff;
-}
-
-.what-noTouch:hover .what-arrow,
-.what-content-active .what-arrow {
-  transform: rotate(-135deg);
-  border-color: var(--accentColor);
-}
-
-.what-noTouch:hover {
-  padding: 1.6rem 0;
-}
-
-/* Sibling dimming */
-.what-sibling .what-title h3 {
-  color: rgba(255, 255, 255, 0.35);
-}
-
-.what-sibling .what-arrow {
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-/* === Responsive === */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .whatIDO {
-    padding: 4rem 2rem;
+    padding: 4rem 1.5rem;
   }
-  .what-box h2.title {
-    font-size: calc(3vw + 22px);
-  }
-}
 
-@media (max-width: 900px) {
-  .whatIDO {
-    padding: 3rem 1.5rem;
-  }
   .what-box {
     flex-direction: column;
     gap: 2rem;
   }
-  .what-box h2.title {
-    font-size: 2.5rem;
-    line-height: 2.6rem;
-  }
-}
 
-@media (max-width: 550px) {
   .what-box h2.title {
-    font-size: 2rem;
+    font-size: calc(8vw + 20px);
+    line-height: calc(8vw + 16px);
   }
-  .what-title h3 {
+
+  .what-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .what-para {
     font-size: 0.95rem;
   }
 }
