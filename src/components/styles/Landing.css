@@ -33,9 +33,7 @@
   top: 0;
   width: 100%;
   height: 130px;
-  background-image: linear-gradient(0deg,
-      transparent,
-      var(--backgroundColor) 70%);
+  background-image: linear-gradient(0deg, transparent, var(--backgroundColor) 70%);
   pointer-events: none;
   z-index: 12;
   opacity: 0;
@@ -46,7 +44,6 @@
   0% {
     transform: translate(-95%, -75%) rotateZ(0deg);
   }
-
   100% {
     transform: translate(-95%, -75%) rotateZ(360deg);
   }
@@ -95,7 +92,6 @@
   height: 400px;
   z-index: 1;
   background-color: #22d3ee;
-  transform: translate(-50%, 36%) scaleX(1.4);
   box-shadow: inset 66px 35px 85px 0px rgba(0, 180, 180, 0.65);
   filter: blur(50px);
   border-radius: 50%;
@@ -105,6 +101,7 @@
   opacity: 0;
 }
 
+/* ===== CHARACTER MODEL — scrolls with page on all screen sizes ===== */
 .character-model {
   height: 80%;
   height: 80vh;
@@ -123,9 +120,7 @@
   content: "";
   width: 100vw;
   height: 250px;
-  background-image: linear-gradient(to bottom,
-      transparent,
-      var(--backgroundColor) 70%);
+  background-image: linear-gradient(to bottom, transparent, var(--backgroundColor) 70%);
   bottom: -50px;
   left: 50%;
   transform: translateX(-50%);
@@ -192,10 +187,6 @@
   font-family: "Geist", sans-serif;
 }
 
-/* .landing-intro h1 span {
-   font-weight: 200; 
-} */
-
 .landing-info {
   position: absolute;
   right: 50%;
@@ -255,40 +246,99 @@ h2.landing-info-h2 {
   width: 100%;
   height: 120%;
   z-index: 3;
-  background-image: linear-gradient(0deg,
-      var(--backgroundColor) 40%,
-      rgba(0, 0, 0, 0) 110%);
+  background-image: linear-gradient(
+    0deg,
+    var(--backgroundColor) 40%,
+    rgba(0, 0, 0, 0) 110%
+  );
   top: 0;
   left: 0;
 }
 
+/* ===== AVATAR IMAGE (inside .character-model) ===== */
+.avatar-wrapper {
+  position: absolute;
+  bottom: 0;
+  right: 5%;
+  width: 420px;
+  height: 420px;
+  z-index: 4;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.avatar-glow-ring {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 229, 255, 0.18) 0%,
+    rgba(0, 229, 255, 0.06) 50%,
+    transparent 70%
+  );
+  box-shadow: 0 0 60px rgba(0, 229, 255, 0.25), 0 0 120px rgba(0, 229, 255, 0.1);
+  animation: avatarPulse 3s ease-in-out infinite;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+@keyframes avatarPulse {
+  0%, 100% { box-shadow: 0 0 60px rgba(0,229,255,0.25), 0 0 120px rgba(0,229,255,0.1); }
+  50% { box-shadow: 0 0 80px rgba(0,229,255,0.4), 0 0 160px rgba(0,229,255,0.18); }
+}
+
+.avatar-circle {
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(0, 229, 255, 0.4);
+  box-shadow: 0 0 30px rgba(0, 229, 255, 0.3), 0 8px 40px rgba(0,0,0,0.5);
+  position: relative;
+  z-index: 1;
+  background: radial-gradient(circle at 40% 35%, rgba(0,229,255,0.08), transparent 70%);
+  animation: avatarFloat 4s ease-in-out infinite;
+}
+
+@keyframes avatarFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.avatar-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* ===== RESPONSIVE ===== */
 @media screen and (min-width: 500px) {
   .landing-circle2 {
     display: block;
   }
-
   .character-model {
     z-index: 0;
   }
-
   .landing-info h3 {
     font-size: 18px;
   }
-
   .landing-intro h2 {
     font-size: 18px;
   }
-
   .landing-intro h1 {
     font-size: 30px;
     line-height: 30px;
   }
-
   .landing-info h2 {
     font-size: 35px;
     line-height: 40px;
   }
-
   h2.landing-info-h2 {
     font-size: 38px;
   }
@@ -298,50 +348,43 @@ h2.landing-info-h2 {
   .character-model {
     height: 80vh;
   }
-
   .landing-intro h2 {
     font-size: 25px;
   }
-
   .landing-intro h1 {
     font-size: 40px;
     line-height: 35px;
   }
-
   .landing-info h3 {
     font-size: 25px;
   }
-
   .landing-info h2 {
     font-size: 45px;
     line-height: 42px;
   }
-
   h2.landing-info-h2 {
     font-size: 55px;
   }
 }
 
 @media screen and (min-width: 1025px) {
+  /* Character stays ABSOLUTE (not fixed) so it scrolls with landing section */
   .character-model {
     height: 100vh;
     bottom: 0;
     z-index: 11;
-    position: fixed;
+    position: absolute;
   }
-
   .character-model::after,
   .character-model::before {
     display: none;
   }
-
   .landing-intro {
     top: 50%;
     left: auto;
     right: 66%;
     transform: translate(0%, -50%);
   }
-
   .landing-info {
     bottom: auto;
     top: 51%;
@@ -350,6 +393,18 @@ h2.landing-info-h2 {
     transform: translate(0%, -50%);
     right: auto;
     left: 66%;
+  }
+  .avatar-wrapper {
+    width: 480px;
+    height: 480px;
+  }
+  .avatar-circle {
+    width: 400px;
+    height: 400px;
+  }
+  .avatar-glow-ring {
+    width: 440px;
+    height: 440px;
   }
 }
 
@@ -360,7 +415,6 @@ h2.landing-info-h2 {
     right: 70%;
     transform: translate(0%, -50%);
   }
-
   .landing-info {
     bottom: auto;
     top: 51%;
@@ -376,21 +430,17 @@ h2.landing-info-h2 {
   .landing-intro h2 {
     font-size: 35px;
   }
-
   .landing-intro h1 {
     font-size: 60px;
     line-height: 55px;
   }
-
   .landing-info h3 {
     font-size: 35px;
   }
-
   .landing-info h2 {
     font-size: 65px;
     line-height: 62px;
   }
-
   h2.landing-info-h2 {
     font-size: 75px;
   }
