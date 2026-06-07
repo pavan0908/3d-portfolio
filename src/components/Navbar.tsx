@@ -35,55 +35,53 @@ const Navbar = () => {
         }
       });
     });
-
-    ScrollTrigger.create({
-      trigger: "#about",
-      start: "top 80%",
-      onEnter: () => {
-        gsap.to(".header", { backgroundColor: "#0a0a0a", duration: 0.3 });
-      },
-      onLeaveBack: () => {
-        gsap.to(".header", { backgroundColor: "transparent", duration: 0.3 });
-      },
-    });
   }, []);
 
   return (
-    <>
-      <div className="header">
-        <a href="/#" className="navbar-title" data-cursor="disable">
-          PM
+    <header className="header">
+      <div className="header-left">
+        <a href="/" className="logo">
+          <span>PM</span>
         </a>
-        <div className="header-right">
-          <ul>
-            <li>
-              <a data-href="#about" href="#about">
-                <HoverLinks text="ABOUT" />
-              </a>
-            </li>
-            <li>
-              <a data-href="#work" href="#work">
-                <HoverLinks text="WORK" />
-              </a>
-            </li>
-            <li>
-              <a data-href="#skills" href="#skills">
-                <HoverLinks text="SKILLS" />
-              </a>
-            </li>
-            <li>
-              <a data-href="#contact" href="#contact">
-                <HoverLinks text="CONTACT" />
-              </a>
-            </li>
-          </ul>
+        <div className="header-marquee">
+          <p>
+            Data EngineerCloud &amp; AnalyticsData EngineerCloud &amp; Analytics
+          </p>
         </div>
-
-        <div className="landing-circle1"></div>
-        <div className="landing-circle2"></div>
-        <div className="nav-fade"></div>
       </div>
-    </>
+      <div className="header-right">
+        <ul>
+          <li>
+            <a data-href="#about" href="#about">
+              <HoverLinks text="ABOUT" />
+            </a>
+          </li>
+          <li>
+            <a data-href="#work" href="#work">
+              <HoverLinks text="WORK" />
+            </a>
+          </li>
+          <li>
+            <a data-href="#career" href="#career">
+              <HoverLinks text="CAREER" />
+            </a>
+          </li>
+          <li>
+            <a data-href="#skills" href="#skills">
+              <HoverLinks text="SKILLS" />
+            </a>
+          </li>
+          <li>
+            <a data-href="#contact" href="#contact">
+              <HoverLinks text="CONTACT" />
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div className="landing-circle1"></div>
+      <div className="landing-circle2"></div>
+      <div className="nav-fade"></div>
+    </header>
   );
 };
 
