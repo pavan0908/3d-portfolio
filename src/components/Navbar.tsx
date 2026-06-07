@@ -41,9 +41,6 @@ const Navbar = () => {
       <a href="/" className="header-logo">
         PM
       </a>
-      <div className="header-marquee">
-        <p>Data Engineer &nbsp;&nbsp;&nbsp; Data Engineer &nbsp;&nbsp;&nbsp; Data Engineer</p>
-      </div>
       <nav>
         <ul>
           <li>
