@@ -19,7 +19,6 @@ const Navbar = () => {
       autoResize: true,
       ignoreMobileResize: true,
     });
-
     smoother.scrollTop(0);
     smoother.paused(true);
 
@@ -39,47 +38,41 @@ const Navbar = () => {
 
   return (
     <header className="header">
-      <div className="header-left">
-        <a href="/" className="logo">
-          <span>PM</span>
-        </a>
-        <div className="header-marquee">
-          <p>
-            Data EngineerData Engineer          </p>
-        </div>
+      <a href="/" className="header-logo">
+        PM
+      </a>
+      <div className="header-marquee">
+        <p>Data Engineer &nbsp;&nbsp;&nbsp; Data Engineer &nbsp;&nbsp;&nbsp; Data Engineer</p>
       </div>
-      <div className="header-right">
+      <nav>
         <ul>
           <li>
-            <a data-href="#about" href="#about">
+            <a href="#about" data-href="#about">
               <HoverLinks text="ABOUT" />
             </a>
           </li>
           <li>
-            <a data-href="#work" href="#work">
+            <a href="#work" data-href="#work">
               <HoverLinks text="WORK" />
             </a>
           </li>
           <li>
-            <a data-href="#career" href="#career">
+            <a href="#career" data-href="#career">
               <HoverLinks text="CAREER" />
             </a>
           </li>
           <li>
-            <a data-href="#skills" href="#skills">
+            <a href="#skills" data-href="#skills">
               <HoverLinks text="SKILLS" />
             </a>
           </li>
           <li>
-            <a data-href="#contact" href="#contact">
+            <a href="#contact" data-href="#contact">
               <HoverLinks text="CONTACT" />
             </a>
           </li>
         </ul>
-      </div>
-      <div className="landing-circle1"></div>
-      <div className="landing-circle2"></div>
-      <div className="nav-fade"></div>
+      </nav>
     </header>
   );
 };
