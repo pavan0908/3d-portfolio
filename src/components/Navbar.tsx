@@ -45,8 +45,7 @@ const Navbar = () => {
         </a>
         <div className="header-marquee">
           <p>
-            Data EngineerCloud &amp; AnalyticsData EngineerCloud &amp; Analytics
-          </p>
+            Data EngineerData Engineer          </p>
         </div>
       </div>
       <div className="header-right">
